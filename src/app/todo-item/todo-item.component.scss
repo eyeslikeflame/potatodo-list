@@ -1,5 +1,13 @@
 @import '../../styles/vars';
 
+:host {
+  margin-bottom: 1rem;
+  position: relative;
+  @include mobile {
+    flex-basis: 49%;
+  }
+}
+
 .card {
   max-width: 20rem;
   height: 10rem;
@@ -8,27 +16,41 @@
   justify-content: space-between;
   text-overflow: ellipsis;
   padding: 1rem;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
   border-radius: 0.25rem;
   cursor: pointer;
   user-select: none;
+}
 
+.title {
 
-  .title {
+}
 
+.remove {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  transition: background 150ms ease;
 
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
   }
-  .description {
-    height: 6rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  &:active {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  svg {
+    width: 100%;
+    height: 100%;
   }
 }
 
-:host {
-  margin-bottom: 1rem;
-
-  @include mobile {
-    flex-basis: 49%;
-  }
+.description {
+  height: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

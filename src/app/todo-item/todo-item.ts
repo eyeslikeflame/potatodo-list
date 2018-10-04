@@ -4,8 +4,8 @@ export class TodoItem {
 
   constructor( public title: string,
                public description: string ) {
-    this.title = this.trimStr( title, 24 ) || 'Untitled';
-    this.description = this.trimStr( description, 200 ) || '';
+    this.title = this.trimStr( title, 24 );
+    this.description = this.trimStr( description, 200 );
     this.created_at = Date.now();
   }
 
@@ -18,6 +18,9 @@ export class TodoItem {
   }
 
   private trimStr( str, length ) {
+    if ( !str ) {
+      return '';
+    }
     let ellipsis = '';
     str = str.trim();
     if ( str.length > 200 ) {
