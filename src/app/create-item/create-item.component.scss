@@ -1,0 +1,11 @@
+section {
+  display: flex;
+  flex-flow: column;
+}
+form {
+  display: flex;
+  flex-flow: column;
+  input {
+    margin: 1rem 0;
+  }
+}

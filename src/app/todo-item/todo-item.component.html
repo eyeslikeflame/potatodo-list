@@ -1,0 +1,9 @@
+<div class="card" (click)="edit($event)">
+  <div class="remove" (click)="remove($event)">DELETE</div>
+  <div class="title">{{item.title}}</div>
+  <div class="description">{{item.description}}</div>
+  <div class="date">
+    <span>Added </span>
+    <time>{{item.getCreatedAt | date:'yyyy-dd-MM, h:mm a'}}</time>
+  </div>
+</div>
