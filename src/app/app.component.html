@@ -9,8 +9,19 @@
     </section>
   </aside>
   <article class="todo-container">
-    <ng-container *ngFor="let todo of appService.todoArr; let i = index">
-      <app-todo-item [item]="todo" [index]="i"></app-todo-item>
-    </ng-container>
+    <section class="todos">
+      <ng-container *ngFor="let todo of appService.todoArr[appService.page]; let i = index">
+        <app-todo-item [item]="todo" [index]="i"></app-todo-item>
+      </ng-container>
+    </section>
+    <section class="pagination">
+      <div class="page"
+           *ngFor="let page of appService.todoArr; let i = index"
+           [ngClass]="{'active': i === appService.page}"
+           (click)="appService.page = i">
+        <span class="number">{{i + 1}}</span>
+      </div>
+    </section>
   </article>
 </main>
+

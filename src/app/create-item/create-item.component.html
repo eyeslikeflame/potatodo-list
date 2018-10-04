@@ -8,3 +8,11 @@
     <button type="submit" (click)="createItem( createForm, $event )">Add</button>
   </form>
 </section>
+<section>
+  <div class="title">
+    Filter by
+  </div>
+  <div class="filters">
+    <input type="text" (input)="filterByTitle($event)">
+  </div>
+</section>

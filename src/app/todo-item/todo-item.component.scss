@@ -1,15 +1,16 @@
 @import '../../styles/vars';
 
 :host {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0.5rem;
   position: relative;
+  width: 23%;
+  max-width: 20rem;
   @include mobile {
     flex-basis: 49%;
   }
 }
 
 .card {
-  max-width: 20rem;
   height: 10rem;
   display: flex;
   flex-flow: column;

@@ -26,13 +26,44 @@ main {
 
 .todo-container {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-content: flex-start;
   flex-basis: 80%;
-
+  flex-flow: row wrap;
+  justify-content: center;
   @include mobile {
     flex-basis: 100%;
+  }
+
+  .todos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-basis: 100%;
+  }
+
+  .pagination {
+    display: flex;
+
+  }
+  .page {
+    border-radius: 0.25rem;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .number {
+      position: absolute;
+    }
+    &.active {
+      color: #ffffff;
+      background: $blue;
+    }
+
+    &:hover:not(.active) {
+      background: rgba(0, 0, 0, 0.2);
+    }
   }
 
 }

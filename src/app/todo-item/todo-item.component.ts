@@ -17,7 +17,9 @@ export class TodoItemComponent implements OnInit {
 
   remove( event ) {
     event.stopPropagation();
-    this.appService.todoArr.splice( this.index, 1 );
+    this.appService.removeElement( this.index );
+    // this.appService.todoArr.remove(index);
+    // this.appService.todoArr.splice( this.index, 1 );
   }
 
   edit( event ) {
