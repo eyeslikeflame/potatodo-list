@@ -1,12 +1,11 @@
 export class TodoItem {
-  private id: number;
-  private created_at: number;
-
-  constructor( public title: string,
-               public description: string ) {
+  constructor(
+              private id: number,
+              public title: string,
+              public description: string,
+              private created_at: number = Date.now()) {
     this.title = this.trimStr( title, 24 );
     this.description = this.trimStr( description, 200 );
-    this.created_at = Date.now();
   }
 
   get getId() {
@@ -18,9 +17,7 @@ export class TodoItem {
   }
 
   private trimStr( str, length ) {
-    if ( !str ) {
-      return '';
-    }
+
     let ellipsis = '';
     str = str.trim();
     if ( str.length > 200 ) {

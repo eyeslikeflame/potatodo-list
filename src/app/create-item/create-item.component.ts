@@ -9,15 +9,17 @@ import { AppService } from '../app.service';
   styleUrls: ['./create-item.component.scss']
 })
 export class CreateItemComponent implements OnInit {
-
+  public description = '';
+  public title = '';
   constructor(public appService: AppService) { }
 
   ngOnInit() {
   }
   createItem( form, event ) {
     const val = form.value;
-    const item = new TodoItem(val.title, val.description);
+    const item = new TodoItem(1, val.title, val.description);
     this.appService.todoArr.push(item);
-    console.log(item);
+    this.description = '';
+    this.title = '';
   }
 }

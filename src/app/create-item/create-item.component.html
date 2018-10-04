@@ -3,8 +3,8 @@
     Add new Todo item
   </div>
   <form #createForm="ngForm">
-    <input type="text" name="title" (ngModel)="title">
-    <textarea type="text" name="description" (ngModel)="description"></textarea>
+    <input type="text" name="title" [(ngModel)]="title">
+    <textarea type="text" name="description" [(ngModel)]="description"></textarea>
     <button type="submit" (click)="createItem( createForm, $event )">Add</button>
   </form>
 </section>
