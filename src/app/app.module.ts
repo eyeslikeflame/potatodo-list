@@ -7,7 +7,7 @@ import { AppService } from './app.service';
 
 import { AppComponent } from './app.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
-import { CreateItemComponent } from './create-item/create-item.component';
+import { CreateItemComponent } from './manage/manage.component';
 
 @NgModule({
   declarations: [

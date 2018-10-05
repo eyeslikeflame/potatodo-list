@@ -8,25 +8,17 @@ import { TodoItem } from './todo-item/todo-item';
 } )
 export class AppService {
   public todoArr = [];
-  private todos = [];
+  public _todos = [];
   private itemsPerPage = 12;
   public page = 0;
-  public filterBy = {
-    title: ( title ) => {
-      const arr = this.todos.filter( el => el.title.search( title ) !== -1 );
-    },
-    date:  ( date ) => {
-
-    }
-  };
 
   constructor( public http: HttpClient ) {
   }
 
   getData() {
     return this.http.get( '/assets/data.json' ).pipe( map( response => {
-      this.todos = this.mapJSON( response );
-      this.paginate( this.todos );
+      this._todos = this.mapJSON( response );
+      this._paginate( this._todos );
     } ) );
   }
 
@@ -36,8 +28,9 @@ export class AppService {
     } );
   }
 
-  private paginate( arr ) {
+  public _paginate( arr ) {
     const pages = Math.ceil( arr.length / this.itemsPerPage );
+    this.todoArr = [];
     let k = 0;
     for ( let i = 0; i < pages; i++ ) {
       this.todoArr[ i ] = [];
@@ -48,19 +41,17 @@ export class AppService {
         this.todoArr[ i ].push( arr[ k ] );
       }
     }
+    console.log( this.todoArr )
   }
 
   public addElement( el ) {
-    this.todos.push( el );
-    this.paginate( this.todos );
-    console.log( this.todoArr );
+    this._todos.push( el );
+    this._paginate( this._todos );
   }
 
   public removeElement( index ) {
     const i = (this.page + 1) * index;
-    this.todos.splice( i, 1 );
-    this.paginate( this.todos );
+    this._todos.splice( i, 1 );
+    this._paginate( this._todos );
   }
-
-  // public editElement( )
 }
