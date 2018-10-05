@@ -12,6 +12,8 @@ import { ManageFilterService } from './manage-filter.service';
 export class CreateItemComponent implements OnInit {
   public description = '';
   public title = '';
+  public titleFilter = null;
+  public dateFilter = null;
 
   constructor( public appService: AppService, public filterService: ManageFilterService ) {
   }
@@ -28,11 +30,13 @@ export class CreateItemComponent implements OnInit {
   }
 
   filterByTitle( event ) {
-    this.filterService.filterBy( 'title', event.target.value )
-    // this.appService.filterBy.title( event.target.value );
+    const val = event.target.value;
+    this.titleFilter = val || null;
+    this.filterService.filterBy( 'title', val );
   }
   filterByDate( event ) {
-    this.filterService.filterBy( 'date', event.target.value )
-    // this.appService.filterBy.title( event.target.value );
+    const val = event.target.value;
+    this.dateFilter = val || null;
+    this.filterService.filterBy( 'date', val );
   }
 }

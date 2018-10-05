@@ -15,10 +15,9 @@ main {
 }
 
 .manage-container {
-  flex-basis: 20%;
+  flex-basis: calc(20% - 1rem);
   overflow-x: hidden;
   padding-right: 1rem;
-  box-sizing: border-box;
   @include mobile {
     flex-basis: 100%;
   }

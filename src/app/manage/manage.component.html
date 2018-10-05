@@ -3,9 +3,21 @@
     Add new Todo item
   </div>
   <form #createForm="ngForm">
-    <input type="text" name="title" [(ngModel)]="title">
-    <textarea type="text" name="description" [(ngModel)]="description"></textarea>
-    <button type="submit" (click)="createItem( createForm, $event )">Add</button>
+    <div class="potato-input"  [ngClass]="{'potato-input__filled': title}">
+      <input id="create-title"
+             type="text"
+             name="title"
+             [(ngModel)]="title">
+      <label for="create-title">Title</label>
+    </div>
+    <div class="potato-input" [ngClass]="{'potato-input__filled': description}">
+      <textarea type="text"
+                id="create-description"
+                name="description"
+                [(ngModel)]="description"></textarea>
+      <label for="create-description">Description</label>
+    </div>
+    <button class="potato-button potato-button__flat" type="submit" (click)="createItem( createForm, $event )">Create</button>
   </form>
 </section>
 <section>
@@ -13,7 +25,13 @@
     Filter by
   </div>
   <div class="filters">
-    <input type="text" (input)="filterByTitle($event)">
-    <input type="text" (input)="filterByDate($event)">
+    <div class="potato-input">
+      <input id="filter-title" type="text" (input)="filterByTitle($event)">
+      <label for="filter-title">Title</label>
+    </div>
+    <div class="potato-input">
+      <input id="filter-date" type="text" (input)="filterByDate($event)">
+      <label for="filter-date">Date</label>
+    </div>
   </div>
 </section>

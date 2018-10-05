@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'normalize';
-@import "vars";
+@import 'vars';
 html {
   font-family: Roboto, sans-serif;
 }
@@ -13,3 +13,6 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-weight: 700;
 }
+
+@include input;
+@include button;

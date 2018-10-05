@@ -1,9 +1,19 @@
 <div class="shadow" (click)="close()"></div>
 <div class="card">
+  <h3 class="title">
+    Edit item
+  </h3>
   <form #editForm="ngForm">
-    <input type="text" name="title" [ngModel]="item.title">
-    <textarea type="text" name="description" [ngModel]="item.description"></textarea>
-    <button type="submit" (click)="edit( editForm, $event )">Save</button>
+    <div class="potato-input potato-input__white-background" [ngClass]="{'potato-input__filled': editTitle.value}">
+      <input #editTitle type="text" id="edit-title" name="title" [ngModel]="item.title">
+      <label for="edit-title">Title</label>
+    </div>
+
+    <div class="potato-input potato-input__white-background" [ngClass]="{'potato-input__filled': editDescription.value}">
+      <textarea #editDescription id="edit-description" type="text" name="description" [ngModel]="item.description"></textarea>
+      <label for="edit-description">Description</label>
+    </div>
+    <button class="potato-button potato-button__flat" type="submit" (click)="edit( editForm, $event )">Save</button>
   </form>
 </div>
 

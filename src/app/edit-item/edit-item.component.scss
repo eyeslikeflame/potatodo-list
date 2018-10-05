@@ -1,11 +1,21 @@
 @import '../../styles/vars';
 .card {
   width: 25rem;
-  height: 30rem;
+  height: 24rem;
   background: #6200EE;
   @include card;
 }
-
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+}
+h3 {
+  margin: 0.5rem 0 1rem;
+}
+button {
+  margin-top: 1rem;
+}
 .shadow {
   position: absolute;
   left: 0;

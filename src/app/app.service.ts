@@ -45,7 +45,7 @@ export class AppService {
   }
 
   public addElement( el ): void {
-    this._todos.push( el );
+    this._todos.unshift( el );
     this.paginate( this._todos );
   }
 
