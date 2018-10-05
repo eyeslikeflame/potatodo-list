@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { TodoItem } from './todo-item';
 import { AppService } from '../app.service';
 
 @Component( {
@@ -11,21 +10,22 @@ import { AppService } from '../app.service';
 export class TodoItemComponent implements OnInit {
   @Input() item;
   @Input() index;
+  @Output() edit: EventEmitter<any> = new EventEmitter();
 
   constructor( public appService: AppService ) {
   }
 
-  remove( event ) {
+  removeItem( event ): void {
     event.stopPropagation();
     this.appService.removeElement( this.index );
-    // this.appService.todoArr.remove(index);
-    // this.appService.todoArr.splice( this.index, 1 );
   }
 
-  edit( event ) {
+  editItem( event ): void {
     event.stopPropagation();
-    this.appService.todoArr[this.index].description = 'kekCheburek';
-    this.appService.todoArr[this.index].title = 'mdaa';
+    this.edit.emit( {
+      item: this.item,
+      index: this.index
+    } );
   }
 
   ngOnInit() {

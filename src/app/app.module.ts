@@ -8,12 +8,14 @@ import { AppService } from './app.service';
 import { AppComponent } from './app.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { CreateItemComponent } from './manage/manage.component';
+import { EditItemComponent } from './edit-item/edit-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoItemComponent,
-    CreateItemComponent
+    CreateItemComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,

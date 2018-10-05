@@ -1,5 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <main>
+  <article class="edit" *ngIf="edit">
+    <app-edit-item [item]="edit?.item"
+                   [index]="edit?.index"
+                   (editClose)="editClose()"
+                   (editOutput)="editSave($event)"></app-edit-item>
+  </article>
   <aside class="manage-container">
     <section class="create-item-container">
       <app-manage></app-manage>
@@ -8,16 +13,18 @@
   <article class="todo-container">
     <section class="todos">
       <ng-container *ngFor="let todo of appService.todoArr[appService.page]; let i = index">
-        <app-todo-item [item]="todo" [index]="i"></app-todo-item>
+        <app-todo-item [item]="todo" [index]="i" (edit)="editInit($event)"></app-todo-item>
       </ng-container>
     </section>
     <section class="pagination">
-      <div class="page"
-           *ngFor="let page of appService.todoArr; let i = index"
-           [ngClass]="{'active': i === appService.page}"
-           (click)="appService.page = i">
-        <span class="number">{{i + 1}}</span>
-      </div>
+      <ng-container *ngFor="let page of appService.todoArr; let i = index">
+        <div class="page"
+             [ngClass]="{'active': i === appService.page}"
+             *ngIf="appService.todos.length / appService.itemsPerPage > 1"
+             (click)="appService.page = i">
+          <span class="number">{{i + 1}}</span>
+        </div>
+      </ng-container>
     </section>
   </article>
 </main>

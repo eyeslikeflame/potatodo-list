@@ -10,3 +10,14 @@ $mobile-width: 500px;
     @content;
   }
 }
+
+@mixin card {
+  background: #ffffff;
+  border-radius: 0.25rem;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+
+@mixin input {
+
+}

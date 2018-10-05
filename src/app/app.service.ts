@@ -2,33 +2,34 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { TodoItem } from './todo-item/todo-item';
+import { Observable } from 'rxjs/index';
 
 @Injectable( {
   providedIn: 'root'
 } )
 export class AppService {
   public todoArr = [];
-  public _todos = [];
-  private itemsPerPage = 12;
+  private _todos = [];
+  public itemsPerPage = 12;
   public page = 0;
 
   constructor( public http: HttpClient ) {
   }
 
-  getData() {
+  getData(): Observable<any> {
     return this.http.get( '/assets/data.json' ).pipe( map( response => {
       this._todos = this.mapJSON( response );
-      this._paginate( this._todos );
+      this.paginate( this._todos );
     } ) );
   }
 
-  private mapJSON( json ) {
+  private mapJSON( json ): Array<TodoItem> {
     return json.map( el => {
       return new TodoItem( el.id, el.title, el.description, el.created_at );
     } );
   }
 
-  public _paginate( arr ) {
+  public paginate( arr ): void {
     const pages = Math.ceil( arr.length / this.itemsPerPage );
     this.todoArr = [];
     let k = 0;
@@ -41,17 +42,26 @@ export class AppService {
         this.todoArr[ i ].push( arr[ k ] );
       }
     }
-    console.log( this.todoArr )
   }
 
-  public addElement( el ) {
+  public addElement( el ): void {
     this._todos.push( el );
-    this._paginate( this._todos );
+    this.paginate( this._todos );
   }
 
-  public removeElement( index ) {
-    const i = (this.page + 1) * index;
+  public removeElement( index ): void {
+    const i = index + this.page * this.itemsPerPage;
     this._todos.splice( i, 1 );
-    this._paginate( this._todos );
+    this.paginate( this._todos );
+  }
+
+  public saveEdit( item, index ) {
+    console.log(this.todoArr[this.page][index]);
+    this.todoArr[this.page][index].title = item.title;
+    this.todoArr[this.page][index].description = item.description;
+  }
+
+  public get todos(): Array<TodoItem> {
+    return this._todos;
   }
 }

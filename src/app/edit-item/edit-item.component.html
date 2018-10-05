@@ -1,0 +1,9 @@
+<div class="shadow" (click)="close()"></div>
+<div class="card">
+  <form #editForm="ngForm">
+    <input type="text" name="title" [ngModel]="item.title">
+    <textarea type="text" name="description" [ngModel]="item.description"></textarea>
+    <button type="submit" (click)="edit( editForm, $event )">Save</button>
+  </form>
+</div>
+

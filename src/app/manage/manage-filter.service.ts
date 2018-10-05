@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AppService } from '../app.service';
+import { TodoItem } from '../todo-item/todo-item';
 
 @Injectable( {
   providedIn: 'root'
@@ -11,27 +12,27 @@ export class ManageFilterService {
     date:  null
   };
   private filters = {
-    title: ( title, arr ) => {
+    title: ( title, arr ): Array<TodoItem> => {
       this.lastValue.title = title || null;
       return arr.filter( el => el.title.search( title ) !== -1 );
     },
-    date:  ( date, arr ) => {
+    date:  ( date, arr ): Array<TodoItem> => {
       this.lastValue.date = date || null;
-      return arr.filter(el => new Date(el.created_at).toString().search(date) !== -1);
+      return arr.filter( el => new Date( el.created_at ).toString().search( date ) !== -1 );
     }
   };
 
   constructor( private appService: AppService ) {
   }
 
-  public filterBy( filterName: string, value: any ) {
-    let filtered = this.filters[ filterName ]( value.trim(), this.appService._todos );
+  public filterBy( filterName: string, value: any ): void {
+    let filtered = this.filters[ filterName ]( value.trim(), this.appService.todos );
 
     for ( let key in this.lastValue ) {
       if ( this.lastValue[ key ] && key !== filterName ) {
-        filtered = this.filters[ key ]( this.lastValue[key], filtered );
+        filtered = this.filters[ key ]( this.lastValue[ key ], filtered );
       }
     }
-    this.appService._paginate(filtered);
+    this.appService.paginate( filtered );
   }
 }
