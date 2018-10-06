@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+
 import { TodoItem } from './todo-item/todo-item';
 import { Observable } from 'rxjs/index';
-import { ManageFilterService } from './manage/manage-filter.service';
 
 @Injectable( {
   providedIn: 'root'

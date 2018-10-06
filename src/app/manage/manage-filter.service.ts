@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import * as moment from 'moment';
 import { AppService } from '../app.service';
 import { TodoItem } from '../todo-item/todo-item';
 
@@ -9,7 +9,7 @@ import { TodoItem } from '../todo-item/todo-item';
 export class ManageFilterService {
   private _lastValue = {
     title: '',
-    date:  0
+    date:  ''
   };
   private filters = {
     title: ( title, arr ): Array<TodoItem> => {
@@ -18,7 +18,10 @@ export class ManageFilterService {
     },
     date:  ( date, arr ): Array<TodoItem> => {
       this._lastValue.date = date || 0;
-      return arr.filter( el => new Date( el.created_at ).toString().search( date ) !== -1 );
+      return arr.filter( el => {
+        const dateFormatted = moment( el.created_at ).format( 'YYYY-DD-MM, h:mm A' );
+        return dateFormatted.search( date ) !== -1;
+      } );
     }
   };
 
@@ -35,6 +38,7 @@ export class ManageFilterService {
     }
     this.appService.paginate( filtered );
   }
+
   public get lastValue() {
     return this._lastValue;
   }
