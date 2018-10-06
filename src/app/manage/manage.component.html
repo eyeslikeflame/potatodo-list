@@ -18,14 +18,14 @@
     Add new Todo item
   </div>
   <form #createForm="ngForm">
-    <div class="potato-input"  [ngClass]="{'potato-input__filled': title}">
+    <div class="potato-input"  [ngClass]="{'potato-input__filled': title, 'potato-input__white-background': toggleCreate}">
       <input id="create-title"
              type="text"
              name="title"
              [(ngModel)]="title">
       <label for="create-title">Title</label>
     </div>
-    <div class="potato-input" [ngClass]="{'potato-input__filled': description}">
+    <div class="potato-input" [ngClass]="{'potato-input__filled': description, 'potato-input__white-background': toggleCreate}">
       <textarea type="text"
                 id="create-description"
                 name="description"
@@ -40,11 +40,11 @@
     Filter by
   </div>
   <div class="filters">
-    <div class="potato-input" [ngClass]="{'potato-input__filled': filterTitle.value}">
+    <div class="potato-input" [ngClass]="{'potato-input__filled': filterTitle.value, 'potato-input__white-background': toggleFilters}">
       <input #filterTitle id="filter-title" type="text" (input)="filterByTitle($event)">
       <label for="filter-title">Title</label>
     </div>
-    <div class="potato-input" [ngClass]="{'potato-input__filled': filterDescription.value}">
+    <div class="potato-input" [ngClass]="{'potato-input__filled': filterDescription.value, 'potato-input__white-background': toggleFilters}">
       <input #filterDescription id="filter-date" type="text" (input)="filterByDate($event)">
       <label for="filter-date">Date</label>
     </div>

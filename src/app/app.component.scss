@@ -16,7 +16,7 @@ main {
   flex-basis: calc(20% - 1rem);
   overflow-x: hidden;
   padding-right: 1rem;
-  @include mobile {
+  @include mobile-and-tablet {
     flex-basis: 100%;
     padding-right: 0;
   }
@@ -27,7 +27,7 @@ main {
   flex-basis: 80%;
   flex-flow: row wrap;
   justify-content: center;
-  @include mobile {
+  @include mobile-and-tablet {
     flex-basis: 100%;
     padding-bottom: 1rem;
   }
@@ -44,11 +44,19 @@ main {
     display: flex;
     position: absolute;
     bottom: 1rem;
-    @include mobile {
+    left: 0;
+    right: 0;
+    justify-content: center;
+    @include mobile-and-tablet {
       bottom: auto;
       top: 1rem;
       max-width: 60%;
       overflow-x: scroll;
+      justify-content: flex-start;
+      padding-left: 0.5rem;
+    }
+    @include tablet {
+      padding-left: 1rem;
     }
   }
   .page {

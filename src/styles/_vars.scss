@@ -4,13 +4,23 @@ $blue: #3126FF;
 $topaz: #A63D40;
 $background: #f0f0f0;
 $mobile-width: 500px;
+$tablet-width: 1024px;
 
 @mixin mobile {
-  @media (max-width: #{$mobile-width}) {
+  @media only screen and (max-width: #{$mobile-width}) {
     @content;
   }
 }
-
+@mixin tablet {
+  @media only screen and (min-width: #{$mobile-width}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+@mixin mobile-and-tablet {
+  @media only screen and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
 @mixin card {
   background: #ffffff;
   border-radius: 0.25rem;

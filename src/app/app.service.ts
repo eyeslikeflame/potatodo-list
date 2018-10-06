@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/index';
 export class AppService {
   public todoArr = [];
   private _todos = [];
-  public itemsPerPage = 2;
+  public itemsPerPage = 12;
   public page = 0;
 
   constructor( public http: HttpClient ) {
