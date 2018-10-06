@@ -2,6 +2,7 @@ export class TodoItem {
   constructor( private _id: number,
                private _title: string,
                private _description: string,
+               // mockup and described data structure had differences in date format so I use UNIX here
                private _created_at: number = Date.now() ) {
     this.title = _title;
     this.description = _description;

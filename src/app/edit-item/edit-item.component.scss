@@ -3,7 +3,16 @@
   width: 25rem;
   height: 24rem;
   background: #6200EE;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
   @include card;
+  @include mobile {
+    width: 85%;
+  }
 }
 form {
   display: flex;
@@ -17,16 +26,6 @@ button {
   margin-top: 1rem;
 }
 .shadow {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.2);
   z-index: -1;
-  cursor: pointer;
-  transition: background 150ms ease;
-  &:hover {
-    background: rgba(0,0,0,0.25);
-  }
+  @include shadow;
 }
