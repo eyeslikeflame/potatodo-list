@@ -24,6 +24,7 @@ export class CreateItemComponent implements OnInit {
     const val = form.value;
     const item = new TodoItem( 1, val.title, val.description );
     this.appService.addElement( item );
+    this.filterService.filterBy('title', this.filterService.lastValue.title);
     this.description = '';
     this.title = '';
   }

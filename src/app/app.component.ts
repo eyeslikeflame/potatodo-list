@@ -27,6 +27,6 @@ export class AppComponent implements OnInit {
 
   public editSave( event ): void {
     this.appService.saveEdit( event, this.edit.index );
-    this.edit = null;
+    this.editClose();
   }
 }

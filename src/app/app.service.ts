@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { TodoItem } from './todo-item/todo-item';
 import { Observable } from 'rxjs/index';
+import { ManageFilterService } from './manage/manage-filter.service';
 
 @Injectable( {
   providedIn: 'root'
@@ -31,6 +32,7 @@ export class AppService {
 
   public paginate( arr ): void {
     const pages = Math.ceil( arr.length / this.itemsPerPage );
+    this.page = 0;
     this.todoArr = [];
     let k = 0;
     for ( let i = 0; i < pages; i++ ) {
@@ -55,8 +57,7 @@ export class AppService {
     this.paginate( this._todos );
   }
 
-  public saveEdit( item, index ) {
-    console.log(this.todoArr[this.page][index]);
+  public saveEdit( item, index ): void {
     this.todoArr[this.page][index].title = item.title;
     this.todoArr[this.page][index].description = item.description;
   }

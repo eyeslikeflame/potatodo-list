@@ -32,7 +32,9 @@
                 [(ngModel)]="description"></textarea>
       <label for="create-description">Description</label>
     </div>
-    <button class="potato-button potato-button__flat" type="submit" (click)="createItem( createForm, $event )">Create</button>
+    <button class="potato-button potato-button__flat"
+            type="submit"
+            (click)="createItem( createForm, $event )">Create</button>
   </form>
 </section>
 <section class="filters-container" [ngClass]="{'active': toggleFilters}">
@@ -44,8 +46,8 @@
       <input #filterTitle id="filter-title" type="text" (input)="filterByTitle($event)">
       <label for="filter-title">Title</label>
     </div>
-    <div class="potato-input" [ngClass]="{'potato-input__filled': filterDescription.value, 'potato-input__white-background': toggleFilters}">
-      <input #filterDescription id="filter-date" type="text" (input)="filterByDate($event)">
+    <div class="potato-input" [ngClass]="{'potato-input__filled': filterDate.value, 'potato-input__white-background': toggleFilters}">
+      <input #filterDate id="filter-date" type="text" (input)="filterByDate($event)">
       <label for="filter-date">Date</label>
     </div>
   </div>

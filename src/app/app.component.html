@@ -1,4 +1,4 @@
-<main>
+<main [ngClass]="{'overflow': edit}">
   <article class="edit" *ngIf="edit">
     <app-edit-item [item]="edit?.item"
                    [index]="edit?.index"
